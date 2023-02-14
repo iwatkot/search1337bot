@@ -1,0 +1,7 @@
+{
+    "start": "Hello, {}\\!\nThis bot can help you to find torrents on `1337x` torrent tracker\\.\nUse the `Search` button to find torrents\\.",
+    "search_button_template": "{} | S: {} | {}",
+    "search": "Now enter your *search* query\\.",
+    "results": "Here's *top ten results* for your search query\\.",
+    "link": "Here's the *magnet link* for your torrent\\."
+}
