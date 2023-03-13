@@ -20,6 +20,7 @@ class MessageModel(BaseModel):
     search_button_template: str
     search: str
     results: str
+    no_results: str
     link: str
 
 
@@ -86,12 +87,20 @@ async def results_handler(message: types.Message):
     buttons."""
     search_query = message.text
     search_results = search(search_query)
-    await bot.send_message(
-        message.from_user.id,
-        MESSAGES.results,
-        reply_markup=search_keyboard(search_results),
-        parse_mode="MarkdownV2",
-    )
+
+    if not search_results:
+        await bot.send_message(
+            message.from_user.id,
+            MESSAGES.no_results,
+            parse_mode="MarkdownV2",
+        )
+    else:
+        await bot.send_message(
+            message.from_user.id,
+            MESSAGES.results,
+            reply_markup=search_keyboard(search_results),
+            parse_mode="MarkdownV2",
+        )
 
 
 if __name__ == "__main__":
